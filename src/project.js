@@ -11,3 +11,9 @@ export default class Project {
     this.todos = [];
   }
 }
+
+function addNewProject(name) {
+  let newProject = new Project(name);
+
+  projects.push(newProject);
+}
