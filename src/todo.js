@@ -1,4 +1,4 @@
-import { projects } from "./project";
+import { projects, addNewProject } from "./project";
 
 class Todo {
   constructor(title, description, dueDate, priority, project, completed) {
@@ -30,5 +30,12 @@ function addTodoToProject(newTodo) {
     (project) => project.name === newTodo.project,
   );
 
-  todosProject.todos.push(newTodo);
+  if (todosProject) {
+    todosProject.todos.push(newTodo);
+  } else {
+    addNewProject(newTodo.project);
+    projects.at(-1).todos.push(newTodo);
+  }
 }
+
+export { addNewTodo };
