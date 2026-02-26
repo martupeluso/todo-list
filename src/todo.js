@@ -1,3 +1,5 @@
+import { projects } from "./project";
+
 class Todo {
   constructor(title, description, dueDate, priority, project, completed) {
     this.id = crypto.randomUUID();
@@ -19,4 +21,14 @@ function addNewTodo(title, description, dueDate, priority, project, completed) {
     project,
     completed,
   );
+
+  addTodoToProject(newTodo);
+}
+
+function addTodoToProject(newTodo) {
+  let todosProject = projects.find(
+    (project) => project.name === newTodo.project,
+  );
+
+  todosProject.todos.push(newTodo);
 }

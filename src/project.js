@@ -17,3 +17,5 @@ function addNewProject(name) {
 
   projects.push(newProject);
 }
+
+export { projects };
