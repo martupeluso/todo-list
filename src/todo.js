@@ -9,3 +9,14 @@ class Todo {
     this.completed = completed;
   }
 }
+
+function addNewTodo(title, description, dueDate, priority, project, completed) {
+  let newTodo = new Todo(
+    title,
+    description,
+    dueDate,
+    priority,
+    project,
+    completed,
+  );
+}
