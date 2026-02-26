@@ -37,5 +37,3 @@ function addTodoToProject(newTodo) {
     projects.at(-1).todos.push(newTodo);
   }
 }
-
-export { addNewTodo };
