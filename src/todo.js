@@ -1,5 +1,7 @@
 import { projects, addNewProject } from "./project";
 
+const todos = [];
+
 class Todo {
   constructor(title, description, dueDate, priority, project, completed) {
     this.id = crypto.randomUUID();
@@ -23,6 +25,7 @@ function addNewTodo(title, description, dueDate, priority, project, completed) {
   );
 
   addTodoToProject(newTodo);
+  todos.push(newTodo);
 }
 
 function addTodoToProject(newTodo) {
