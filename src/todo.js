@@ -1,4 +1,4 @@
-import { projects, addNewProject } from "./project";
+import { projects, addNewProject } from "./project.js";
 
 const todos = [];
 
