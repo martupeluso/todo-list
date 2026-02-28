@@ -41,4 +41,23 @@ function deleteTodo(id) {
   todos.splice(index, 1);
 }
 
+function editTodo(
+  id,
+  title,
+  description,
+  dueDate,
+  priority,
+  project,
+  completed,
+) {
+  let chosenTodo = todos.find((todo) => todo.id === id);
+
+  chosenTodo.title = title;
+  chosenTodo.description = description;
+  chosenTodo.dueDate = dueDate;
+  chosenTodo.priority = priority;
+  chosenTodo.project = project;
+  chosenTodo.completed = completed;
+}
+
 export { todos };
