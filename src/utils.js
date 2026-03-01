@@ -31,6 +31,10 @@ function filterByThisWeek(todos) {
   return todos.filter((todo) => isThisWeek(parseISO(todo.dueDate)));
 }
 
+function filterByPriority(todos, priority) {
+  return todos.filter((todo) => todo.priority === priority);
+}
+
 function isThisWeek(dueDate) {
   let today = new Date();
 
