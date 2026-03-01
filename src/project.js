@@ -5,6 +5,7 @@ const projects = getFromLocalStorage("projects") || [];
 
 class Project {
   constructor(name) {
+    this.id = crypto.randomUUID();
     this.name = name;
   }
 
