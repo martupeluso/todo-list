@@ -1,4 +1,11 @@
-import { compareAsc } from "date-fns";
+import {
+  compareAsc,
+  isToday,
+  parseISO,
+  isAfter,
+  isBefore,
+  endOfWeek,
+} from "date-fns";
 
 function sortByName(todos) {
   // localeCompare allows for correct sorting of words in any language, and the
@@ -14,4 +21,21 @@ function sortByPriority(todos) {
 
 function sortByDueDate(todos) {
   return todos.toSorted((a, b) => compareAsc(a.dueDate, b.dueDate));
+}
+
+function filterByToday(todos) {
+  return todos.filter((todo) => isToday(parseISO(todo.dueDate)));
+}
+
+function filterByThisWeek(todos) {
+  return todos.filter((todo) => isThisWeek(parseISO(todo.dueDate)));
+}
+
+function isThisWeek(dueDate) {
+  let today = new Date();
+
+  return (
+    (isToday(dueDate) || isAfter(dueDate, today)) &&
+    isBefore(dueDate, endOfWeek(today))
+  );
 }
