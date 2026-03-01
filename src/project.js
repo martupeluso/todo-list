@@ -22,6 +22,14 @@ function addNewProject(name) {
   saveToLocalStorage("projects", projects);
 }
 
+function deleteProject(id) {
+  let index = projects.findIndex((project) => project.id === id);
+
+  projects.splice(index, 1);
+
+  saveToLocalStorage("projects", projects);
+}
+
 addNewProject("Inbox");
 
 export { projects, addNewProject };
