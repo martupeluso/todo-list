@@ -1,6 +1,7 @@
 import { projects, addNewProject } from "./project.js";
+import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 
-const todos = [];
+const todos = getFromLocalStorage("todos") || [];
 
 class Todo {
   constructor(title, description, dueDate, priority, project, completed) {
@@ -33,12 +34,16 @@ function addNewTodo(title, description, dueDate, priority, project, completed) {
   }
 
   todos.push(newTodo);
+
+  saveToLocalStorage("todos", todos);
 }
 
 function deleteTodo(id) {
   let index = todos.findIndex((todo) => todo.id === id);
 
   todos.splice(index, 1);
+
+  saveToLocalStorage("todos", todos);
 }
 
 function editTodo(
@@ -58,6 +63,8 @@ function editTodo(
   chosenTodo.priority = priority;
   chosenTodo.project = project;
   chosenTodo.completed = completed;
+
+  saveToLocalStorage("todos", todos);
 }
 
 export { todos };

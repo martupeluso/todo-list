@@ -1,6 +1,7 @@
 import { todos } from "./todo.js";
+import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 
-const projects = [];
+const projects = getFromLocalStorage("projects") || [];
 
 class Project {
   constructor(name) {
@@ -16,6 +17,8 @@ function addNewProject(name) {
   let newProject = new Project(name);
 
   projects.push(newProject);
+
+  saveToLocalStorage("projects", projects);
 }
 
 addNewProject("Inbox");
