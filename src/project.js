@@ -30,6 +30,8 @@ function deleteProject(id) {
   saveToLocalStorage("projects", projects);
 }
 
-addNewProject("Inbox");
+if (!projects.some((project) => project.name === "Inbox")) {
+  addNewProject("Inbox");
+}
 
 export { projects, addNewProject };
