@@ -31,6 +31,10 @@
   --light-text: #828282;
 }
 
+::selection {
+  background-color: var(--selection);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -41,10 +45,93 @@
 
 body {
   line-height: 1.5;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1.5fr;
+  background-color: var(--main-bg);
+  height: 100vh;
+}
+
+.main,
+.sidebar {
+  padding: 1rem 2rem;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+}
+
+hr {
+  border: 1px solid var(--miscellaneous);
+}
+
+h1 + hr {
+  width: 175px;
+}
+
+button {
+  background: none;
+  border: none;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 h1,
 h2 {
   font-family: "Josefin Sans", var(--font-stack);
   font-weight: 500;
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+.filters,
+.list {
+  padding-top: 1rem 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-header .sort-options {
+  display: flex;
+  align-items: center;
+}
+
+.main-header .sort-options ul {
+  display: flex;
+  padding-left: 1rem;
+  gap: 1rem;
+}
+
+.main-header .sort-options ul li {
+  background-color: var(--miscellaneous);
+  padding: 4px 14px 2px 14px;
+  border-radius: 15px;
+}
+
+.main-header .sort-options ul li:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+}
+
+.main-header .sort-options .sort-name {
+  background-color: var(--accent);
 }

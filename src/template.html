@@ -6,7 +6,7 @@
     <title>Todo List</title>
   </head>
   <body>
-    <div class="left-sidebar">
+    <div class="sidebar left">
       <h1>To<span>do</span> List</h1>
       <hr>
       <button>Add new todo</button>
@@ -15,21 +15,25 @@
         <li class="today">Today</li>
         <li class="upcoming">Upcoming</li>
       </ul>
-      <h2>Filters</h2>
-      <hr>
+      <div class="filters">
+        <h2>Filters</h2>
+        <hr>
+      </div>
       <ol>
         <li class="p1">Priority 1</li>
         <li class="p2">Priority 2</li>
         <li class="p3">Priority 3</li>
       </ol>
-      <h2>Lists</h2>
-      <hr>
+      <div class="lists">
+        <h2>Lists</h2>
+        <hr>
+      </div>
       <ul class="projects-list"></ul>
     </div>
     <div class="main">
       <div class="main-header">
         <h2 class="project-name">Inbox</h2>
-        <div>
+        <div class="sort-options">
           <span>Sort by:</span>
           <ul>
             <li class="sort-name">Name</li>
@@ -42,7 +46,7 @@
         <ul class="todos"></ul>
       </div>
     </div>
-    <div class="right-sidebar">
+    <div class="sidebar right">
       <h2>Completed</h2>
       <ul class="completed-todos"></ul>
     </div>
