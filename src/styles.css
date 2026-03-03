@@ -25,8 +25,15 @@
 }
 
 * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: "Josefin Sans", var(--font-stack);
   font-weight: 400;
+}
+
+body {
+  line-height: 1.5;
 }
 
 h1,
