@@ -69,6 +69,10 @@ h1 + hr {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  padding: 4px 14px 4px 0;
+  gap: 8px;
   background: none;
   border: none;
   margin: 1rem 0;
@@ -94,9 +98,75 @@ h1 span {
   color: var(--accent);
 }
 
+.sidebar.left ul:first-of-type li:not(li:last-child) {
+  margin-bottom: 8px;
+}
+
+.inbox,
+.today,
+.upcoming {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inbox::before {
+  content: url(./assets/icons/inbox.svg);
+  width: 20px;
+  height: 25px;
+}
+
+.today::before {
+  content: url(./assets/icons/calendar.svg);
+  width: 20px;
+  height: 25px;
+}
+
+.upcoming::before {
+  content: url(./assets/icons/corner-down-right.svg);
+  width: 20px;
+  height: 25px;
+}
+
 .filters,
 .projects {
   padding-top: 1rem 0;
+}
+
+.projects div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.projects div img:hover {
+  cursor: pointer;
+}
+
+.sidebar.left ol li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar.left ol li:not(li:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.sidebar.left ol li::before {
+  content: url(./assets/icons/arrow-right-circle.svg);
+  width: 20px;
+  height: 25px;
+}
+
+button:hover,
+.inbox:hover,
+.today:hover,
+.upcoming:hover,
+.sidebar.left ol li:hover {
+  cursor: pointer;
+  background-color: #ffecc9;
+  border-radius: 15px;
 }
 
 ul,
