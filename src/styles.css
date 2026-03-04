@@ -68,7 +68,7 @@ h1 + hr {
   width: 175px;
 }
 
-button {
+.sidebar button {
   display: flex;
   align-items: center;
   padding: 4px 14px 4px 0;
@@ -159,7 +159,7 @@ h1 span {
   height: 25px;
 }
 
-button:hover,
+.sidebar button:hover,
 .inbox:hover,
 .today:hover,
 .upcoming:hover,
@@ -203,5 +203,31 @@ ol {
 }
 
 .main-header .sort-options .sort-name {
+  background-color: var(--accent);
+}
+
+.theme-picker {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1.5rem;
+  gap: 12px;
+}
+
+.theme-picker button {
+  background-color: var(--miscellaneous);
+  border: none;
+  padding: 10px 10px 8px 10px;
+  border-radius: 30px;
+}
+
+.theme-picker button img {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-picker button:hover {
+  cursor: pointer;
   background-color: var(--accent);
 }
