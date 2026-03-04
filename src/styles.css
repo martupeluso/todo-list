@@ -165,7 +165,7 @@ button:hover,
 .upcoming:hover,
 .sidebar.left ol li:hover {
   cursor: pointer;
-  background-color: #ffecc9;
+  background-color: var(--selection);
   border-radius: 15px;
 }
 
