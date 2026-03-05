@@ -75,7 +75,7 @@ h1 + hr {
   gap: 8px;
   background: none;
   border: none;
-  margin: 1rem 0;
+  margin-top: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
 }
@@ -178,6 +178,7 @@ ol {
 
 .main-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
