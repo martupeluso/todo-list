@@ -149,7 +149,7 @@ h1 span {
   gap: 12px;
 }
 
-.sidebar.left ol li:not(li:last-of-type) {
+.sidebar.left li:not(li:last-of-type) {
   margin-bottom: 8px;
 }
 
@@ -163,7 +163,8 @@ h1 span {
 .inbox:hover,
 .today:hover,
 .upcoming:hover,
-.sidebar.left ol li:hover {
+.sidebar.left ol li:hover,
+.projects-list li:hover {
   cursor: pointer;
   background-color: var(--selection);
   border-radius: 15px;
@@ -230,4 +231,16 @@ ol {
 .theme-picker button:hover {
   cursor: pointer;
   background-color: var(--accent);
+}
+
+.projects-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.projects-list li::before {
+  content: url("./assets/icons/folder.svg");
+  width: 20px;
+  height: 25px;
 }
