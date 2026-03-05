@@ -1,6 +1,8 @@
 import { projects } from "./project.js";
+import { todos } from "./todo.js";
 
 const projectsList = document.querySelector(".projects-list");
+const todosList = document.querySelector(".todos");
 
 function showProjects() {
   for (let project of projects) {
@@ -13,4 +15,17 @@ function showProjects() {
   }
 }
 
-export { showProjects };
+function showTodos(currentProject) {
+  todosList.textContent = "";
+
+  for (let todo of todos) {
+    if (todo.project === currentProject) {
+      const todoItem = document.createElement("li");
+      todoItem.textContent = todo.title;
+
+      todosList.appendChild(todoItem);
+    }
+  }
+}
+
+export { showProjects, showTodos };
