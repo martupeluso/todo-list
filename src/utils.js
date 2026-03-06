@@ -1,10 +1,12 @@
 import {
   compareAsc,
   isToday,
+  isTomorrow,
   parseISO,
   isAfter,
   isBefore,
   endOfWeek,
+  format,
 } from "date-fns";
 
 function sortByName(todos) {
@@ -43,3 +45,17 @@ function isThisWeek(dueDate) {
     isBefore(dueDate, endOfWeek(today))
   );
 }
+
+function formatDate(date) {
+  if (isToday(date)) {
+    return `Today ${format(date, "HH:mm")}`;
+  } else if (isTomorrow(date)) {
+    return `Tomorrow ${format(date, "HH:mm")}`;
+  } else if (isThisWeek(date)) {
+    return format(date, "cccc HH:mm");
+  } else {
+    return format(date, "LLL dd HH:mm");
+  }
+}
+
+export { formatDate };

@@ -1,5 +1,6 @@
 import { projects } from "./project.js";
 import { todos } from "./todo.js";
+import { formatDate } from "./utils.js";
 
 const projectsList = document.querySelector(".projects-list");
 const todosList = document.querySelector(".todos");
@@ -35,7 +36,7 @@ function showTodos(currentProject) {
       todoDescription.textContent = todo.description;
 
       const todoDate = document.createElement("span");
-      todoDate.textContent = todo.dueDate;
+      todoDate.textContent = `${formatDate(todo.dueDate)}`;
 
       const todoPriority = document.createElement("span");
       todoPriority.textContent = ` — P${todo.priority}`;
