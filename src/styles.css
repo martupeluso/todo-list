@@ -245,3 +245,53 @@ ol {
   width: 20px;
   height: 25px;
 }
+
+.todo-div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
+}
+
+.todo-div input {
+  -webkit-appearance: none;
+  appearance: none;
+  align-self: flex-start;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text);
+  background-color: var(--miscellaneous);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 25px;
+}
+
+.todo-div input:checked {
+  display: grid;
+  place-content: center;
+}
+
+.todo-div input:checked::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url(./assets/icons/check.svg);
+  background-size: contain;
+}
+
+.todo-div span:first-of-type:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url(./assets/icons/calendar.svg);
+  background-size: contain;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.todo-div p {
+  font-size: 0.9rem;
+  color: var(--light-text);
+}

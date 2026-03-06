@@ -20,10 +20,32 @@ function showTodos(currentProject) {
 
   for (let todo of todos) {
     if (todo.project === currentProject) {
-      const todoItem = document.createElement("li");
-      todoItem.textContent = todo.title;
+      const div = document.createElement("todo-div");
+      div.classList.add("todo-div");
 
-      todosList.appendChild(todoItem);
+      const input = document.createElement("input");
+      input.type = "checkbox";
+
+      const todoDataDiv = document.createElement("todo-data-div");
+
+      const todoName = document.createElement("li");
+      todoName.textContent = todo.title;
+
+      const todoDescription = document.createElement("p");
+      todoDescription.textContent = todo.description;
+
+      const todoDate = document.createElement("span");
+      todoDate.textContent = todo.dueDate;
+
+      const todoPriority = document.createElement("span");
+      todoPriority.textContent = ` — P${todo.priority}`;
+
+      const hr = document.createElement("hr");
+
+      todoDataDiv.append(todoName, todoDescription, todoDate, todoPriority);
+
+      div.append(input, todoDataDiv);
+      todosList.append(div, hr);
     }
   }
 }
