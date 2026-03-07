@@ -66,9 +66,11 @@
     <dialog class="modal">
       <form method="dialog">
         <div class="dialog-header">
-          <input type="text" placeholder="Todo title" id="title" name="title">
+          <input type="text" placeholder="Todo title" id="title" name="title"
+            required>
           <img src="./assets/icons/x.svg" alt="" class="cancel">
-          <img src="./assets/icons/check.svg" alt="" class="confirm">
+          <button type="submit"><img src="./assets/icons/check.svg" alt=""
+              class="confirm"></button>
         </div>
         <textarea placeholder="Description" id="description"
           name="description"></textarea>

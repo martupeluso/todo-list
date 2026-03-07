@@ -1,5 +1,6 @@
 import "./styles.css";
 import { showProjects, showTodos } from "./dom.js";
+import { addNewTodo } from "./todo.js";
 
 const projectName = document.querySelector(".project-name");
 
@@ -36,4 +37,18 @@ addButton.addEventListener("click", () => {
 cancelModal.addEventListener("click", () => {
   modal.close();
   form.reset();
+});
+
+form.addEventListener("submit", () => {
+  let title = document.querySelector("#title").value;
+  let description = document.querySelector("#description").value;
+  let dueDate = document.querySelector("#datetime").value || new Date();
+  let priority = document.querySelector("#priority").value;
+  let project = document.querySelector("#project").value;
+  let completed = false;
+  addNewTodo(title, description, dueDate, priority, project, completed);
+
+  modal.close();
+  form.reset();
+  showTodos(currentProject);
 });

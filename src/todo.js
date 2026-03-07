@@ -67,4 +67,4 @@ function editTodo(
   saveToLocalStorage("todos", todos);
 }
 
-export { todos };
+export { todos, addNewTodo };

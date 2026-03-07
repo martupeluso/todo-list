@@ -321,6 +321,7 @@ ol {
 .dialog-header img {
   width: 20px;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .modal input[type="text"] {
@@ -353,4 +354,9 @@ ol {
 .modal textarea:focus {
   outline: 2px solid var(--miscellaneous);
   border-radius: 8px;
+}
+
+button[type="submit"] {
+  background: none;
+  border: none;
 }
