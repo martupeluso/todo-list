@@ -1,6 +1,8 @@
 import "./styles.css";
 import { showProjects, showTodos } from "./dom.js";
 
+const projectName = document.querySelector(".project-name");
+
 let currentProject = "Inbox";
 
 showProjects();
@@ -10,6 +12,7 @@ const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
   currentProject = "Inbox";
   showTodos(currentProject);
+  projectName.textContent = currentProject;
 });
 
 const projects = document.querySelectorAll(".projects-list li");
@@ -17,6 +20,7 @@ projects.forEach((project) => {
   project.addEventListener("click", () => {
     currentProject = project.textContent;
     showTodos(currentProject);
+    projectName.textContent = currentProject;
   });
 });
 
