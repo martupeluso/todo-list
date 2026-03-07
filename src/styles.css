@@ -295,3 +295,67 @@ ol {
   font-size: 0.9rem;
   color: var(--light-text);
 }
+
+.modal {
+  position: absolute;
+  padding: 1.5rem;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--miscellaneous);
+  border-radius: 15px;
+  color: var(--light-text);
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  display: flex;
+  gap: 12px;
+}
+
+.dialog-header img:first-of-type {
+  margin-left: auto;
+}
+
+.dialog-header img {
+  width: 20px;
+  cursor: pointer;
+}
+
+.modal input[type="text"] {
+  padding: 8px;
+  font-size: 1.5rem;
+  background-color: inherit;
+  border: none;
+  width: 100%;
+}
+
+.modal textarea {
+  padding: 8px;
+  margin: 4px 0 8px 0;
+  resize: vertical;
+  background-color: inherit;
+  border: none;
+  font: inherit;
+  min-height: 50px;
+  width: 100%;
+}
+
+.modal .todo-info {
+  padding: 8px;
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.modal input[type="text"]:focus,
+.modal textarea:focus {
+  outline: 2px solid var(--miscellaneous);
+  border-radius: 8px;
+}

@@ -19,3 +19,17 @@ projects.forEach((project) => {
     showTodos(currentProject);
   });
 });
+
+const modal = document.querySelector(".modal");
+const form = document.querySelector(".modal form");
+const cancelModal = document.querySelector(".modal .cancel");
+
+const addButton = document.querySelector(".add-new-todo");
+addButton.addEventListener("click", () => {
+  modal.showModal();
+});
+
+cancelModal.addEventListener("click", () => {
+  modal.close();
+  form.reset();
+});

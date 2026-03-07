@@ -9,7 +9,7 @@
     <div class="sidebar left">
       <h1>To<span>do</span> List</h1>
       <hr>
-      <button>
+      <button class="add-new-todo">
         <img src="./assets/icons/plus-circle-accent.svg" alt="" width="24"
           height="24">
         <span>Add new todo</span></button>
@@ -63,5 +63,31 @@
       <button class="dark-theme"><img src="./assets/icons/moon.svg"
           alt=""></button>
     </div>
+    <dialog class="modal">
+      <form method="dialog">
+        <div class="dialog-header">
+          <input type="text" placeholder="Todo title" id="title" name="title">
+          <img src="./assets/icons/x.svg" alt="" class="cancel">
+          <img src="./assets/icons/check.svg" alt="" class="confirm">
+        </div>
+        <textarea placeholder="Description" id="description"
+          name="description"></textarea>
+        <div class="todo-info">
+          <span>Date: </span>
+          <input type="datetime-local" name="datetime" id="datetime">
+          <span>Project: </span>
+          <select name="project" id="project">
+            <option value="Inbox">Inbox</option>
+          </select>
+          <span>Priority: </span>
+          <select name="priority" id="priority">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
