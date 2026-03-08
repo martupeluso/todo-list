@@ -16,13 +16,15 @@ inbox.addEventListener("click", () => {
   projectName.textContent = currentProject;
 });
 
-const projects = document.querySelectorAll(".projects-list li");
-projects.forEach((project) => {
-  project.addEventListener("click", () => {
+const projectsList = document.querySelector(".projects-list");
+projectsList.addEventListener("click", (e) => {
+  let project = e.target.closest("li");
+
+  if (project) {
     currentProject = project.textContent;
     showTodos(currentProject);
     projectName.textContent = currentProject;
-  });
+  }
 });
 
 const modal = document.querySelector(".modal");
