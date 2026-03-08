@@ -360,3 +360,7 @@ button[type="submit"] {
   background: none;
   border: none;
 }
+
+#project-choice {
+  width: 100%;
+}

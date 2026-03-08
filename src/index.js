@@ -44,7 +44,7 @@ form.addEventListener("submit", () => {
   let description = document.querySelector("#description").value;
   let dueDate = document.querySelector("#datetime").value || new Date();
   let priority = document.querySelector("#priority").value;
-  let project = document.querySelector("#project").value;
+  let project = document.querySelector("#project-choice").value;
   let completed = false;
   addNewTodo(title, description, dueDate, priority, project, completed);
 

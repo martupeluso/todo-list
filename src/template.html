@@ -77,10 +77,11 @@
         <div class="todo-info">
           <label for="datetime">Date: </label>
           <input type="datetime-local" name="datetime" id="datetime">
-          <label for="project">Project: </label>
-          <select name="project" id="project">
+          <label for="project-choice">Project: </label>
+          <input list="project" name="project-choice" id="project-choice">
+          <datalist name="project" id="project">
             <option value="Inbox">Inbox</option>
-          </select>
+          </datalist>
           <label for="priority">Priority: </label>
           <select name="priority" id="priority">
             <option value="1">1</option>
