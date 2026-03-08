@@ -51,4 +51,5 @@ form.addEventListener("submit", () => {
   modal.close();
   form.reset();
   showTodos(currentProject);
+  showProjects();
 });
