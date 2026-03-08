@@ -6,6 +6,8 @@ const projectsList = document.querySelector(".projects-list");
 const todosList = document.querySelector(".todos");
 
 function showProjects() {
+  projectsList.textContent = "";
+
   for (let project of projects) {
     if (project.name !== "Inbox") {
       const projectItem = document.createElement("li");
