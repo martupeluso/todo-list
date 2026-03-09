@@ -23,13 +23,13 @@ function showTodos(currentProject) {
 
   for (let todo of todos) {
     if (todo.project === currentProject) {
-      const div = document.createElement("todo-div");
+      const div = document.createElement("div");
       div.classList.add("todo-div");
 
       const input = document.createElement("input");
       input.type = "checkbox";
 
-      const todoDataDiv = document.createElement("todo-data-div");
+      const todoDataDiv = document.createElement("div");
 
       const todoName = document.createElement("li");
       todoName.textContent = todo.title;
