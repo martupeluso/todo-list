@@ -25,6 +25,7 @@ function showTodos(currentProject) {
     if (todo.project === currentProject) {
       const div = document.createElement("div");
       div.classList.add("todo-div");
+      div.setAttribute("data-id", todo.id);
 
       const input = document.createElement("input");
       input.type = "checkbox";
