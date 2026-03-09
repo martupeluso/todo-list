@@ -1,5 +1,5 @@
 import { projects } from "./project.js";
-import { todos } from "./todo.js";
+import { todos, deleteTodo } from "./todo.js";
 import { formatDate } from "./utils.js";
 
 const projectsList = document.querySelector(".projects-list");
@@ -47,6 +47,13 @@ function showTodos(currentProject) {
 
       const deleteButton = document.createElement("span");
       deleteButton.classList.add("delete-button");
+
+      deleteButton.addEventListener("click", (e) => {
+        let id = e.target.parentElement.getAttribute("data-id");
+
+        deleteTodo(id);
+        showTodos(currentProject);
+      });
 
       const hr = document.createElement("hr");
 
