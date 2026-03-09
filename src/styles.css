@@ -243,9 +243,13 @@ ol {
 
 .todo-div {
   display: flex;
-  align-items: center;
   gap: 12px;
   padding: 1rem;
+}
+
+.todo-div:hover {
+  background-color: var(--sidebar-bg);
+  cursor: pointer;
 }
 
 .todo-div input {
@@ -275,12 +279,29 @@ ol {
   background-size: contain;
 }
 
-.todo-div span:first-of-type:before {
+.todo-div .todo-date::before {
   content: "";
   display: inline-block;
   width: 15px;
   height: 15px;
   background-image: url(./assets/icons/calendar.svg);
+  background-size: contain;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.todo-div .delete-button {
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.todo-div:hover .delete-button::before {
+  content: "";
+  cursor: pointer;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url(./assets/icons/trash.svg);
   background-size: contain;
   margin-right: 6px;
   vertical-align: -1px;

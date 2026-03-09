@@ -40,15 +40,19 @@ function showTodos(currentProject) {
 
       const todoDate = document.createElement("span");
       todoDate.textContent = `${formatDate(todo.dueDate)}`;
+      todoDate.classList.add("todo-date");
 
       const todoPriority = document.createElement("span");
       todoPriority.textContent = ` — P${todo.priority}`;
+
+      const deleteButton = document.createElement("span");
+      deleteButton.classList.add("delete-button");
 
       const hr = document.createElement("hr");
 
       todoDataDiv.append(todoName, todoDescription, todoDate, todoPriority);
 
-      div.append(input, todoDataDiv);
+      div.append(input, todoDataDiv, deleteButton);
       todosList.append(div, hr);
     }
   }
