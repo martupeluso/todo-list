@@ -385,3 +385,26 @@ button[type="submit"] {
 #project-choice {
   width: 100%;
 }
+
+.delete-modal {
+  width: fit-content;
+}
+
+.delete-modal div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.delete-modal button {
+  background-color: var(--miscellaneous);
+  padding: 8px 14px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-modal button:hover {
+  background-color: var(--accent);
+}

@@ -1,6 +1,6 @@
 import "./styles.css";
 import { showProjects, showTodos } from "./dom.js";
-import { addNewTodo } from "./todo.js";
+import { addNewTodo, deleteTodo } from "./todo.js";
 
 const projectName = document.querySelector(".project-name");
 
@@ -54,4 +54,32 @@ form.addEventListener("submit", () => {
   form.reset();
   showTodos(currentProject);
   showProjects();
+});
+
+const deleteModal = document.querySelector(".delete-modal");
+
+const cancelDelete = document.querySelector(".delete-modal .cancel-button");
+const confirmDelete = document.querySelector(".delete-modal .delete-button");
+
+let todoToDelete = null;
+
+const todosList = document.querySelector(".todos");
+todosList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-button")) {
+    todoToDelete = e.target.closest("div");
+
+    deleteModal.showModal();
+  }
+});
+
+cancelDelete.addEventListener("click", () => {
+  deleteModal.close();
+});
+
+confirmDelete.addEventListener("click", () => {
+  let id = todoToDelete.getAttribute("data-id");
+
+  deleteTodo(id);
+  showTodos(currentProject);
+  deleteModal.close();
 });

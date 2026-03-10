@@ -48,13 +48,6 @@ function showTodos(currentProject) {
       const deleteButton = document.createElement("span");
       deleteButton.classList.add("delete-button");
 
-      deleteButton.addEventListener("click", (e) => {
-        let id = e.target.parentElement.getAttribute("data-id");
-
-        deleteTodo(id);
-        showTodos(currentProject);
-      });
-
       const hr = document.createElement("hr");
 
       todoDataDiv.append(todoName, todoDescription, todoDate, todoPriority);
