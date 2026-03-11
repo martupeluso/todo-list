@@ -1,6 +1,11 @@
 import { projects } from "./project.js";
 import { todos, deleteTodo } from "./todo.js";
-import { formatDate } from "./utils.js";
+import {
+  sortByName,
+  sortByDueDate,
+  sortByPriority,
+  formatDate,
+} from "./utils.js";
 
 const projectsList = document.querySelector(".projects-list");
 const todosList = document.querySelector(".todos");
@@ -18,10 +23,20 @@ function showProjects() {
   }
 }
 
-function showTodos(currentProject) {
+function showTodos(currentProject, currentSort) {
   todosList.textContent = "";
 
-  for (let todo of todos) {
+  let sortedTodos;
+
+  if (currentSort === "Name") {
+    sortedTodos = sortByName(todos);
+  } else if (currentSort === "Date") {
+    sortedTodos = sortByDueDate(todos);
+  } else {
+    sortedTodos = sortByPriority(todos);
+  }
+
+  for (let todo of sortedTodos) {
     if (todo.project === currentProject) {
       const div = document.createElement("div");
       div.classList.add("todo-div");

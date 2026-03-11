@@ -5,14 +5,15 @@ import { addNewTodo, deleteTodo } from "./todo.js";
 const projectName = document.querySelector(".project-name");
 
 let currentProject = "Inbox";
+let currentSort = "Name";
 
 showProjects();
-showTodos(currentProject);
+showTodos(currentProject, currentSort);
 
 const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
   currentProject = "Inbox";
-  showTodos(currentProject);
+  showTodos(currentProject, currentSort);
   projectName.textContent = currentProject;
 });
 
@@ -22,8 +23,21 @@ projectsList.addEventListener("click", (e) => {
 
   if (project) {
     currentProject = project.textContent;
-    showTodos(currentProject);
+    showTodos(currentProject, currentSort);
     projectName.textContent = currentProject;
+  }
+});
+
+const sortButtons = document.querySelector(".sort-options ul");
+sortButtons.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+
+  if (li) {
+    const radio = li.querySelector("input[type='radio']");
+    radio.checked = true;
+    currentSort = radio.value;
+
+    showTodos(currentProject, currentSort);
   }
 });
 
@@ -52,7 +66,7 @@ form.addEventListener("submit", () => {
 
   modal.close();
   form.reset();
-  showTodos(currentProject);
+  showTodos(currentProject, currentSort);
   showProjects();
 });
 
@@ -80,6 +94,6 @@ confirmDelete.addEventListener("click", () => {
   let id = todoToDelete.getAttribute("data-id");
 
   deleteTodo(id);
-  showTodos(currentProject);
+  showTodos(currentProject, currentSort);
   deleteModal.close();
 });

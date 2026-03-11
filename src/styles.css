@@ -199,7 +199,16 @@ ol {
   cursor: pointer;
 }
 
-.main-header .sort-options .sort-name {
+.main-header .sort-options ul li label {
+  display: block;
+  cursor: pointer;
+}
+
+.main-header .sort-options ul li input[type="radio"] {
+  display: none;
+}
+
+.main-header .sort-options ul li:has(input:checked) {
   background-color: var(--accent);
 }
 
