@@ -1,5 +1,5 @@
 import { projects } from "./project.js";
-import { todos, deleteTodo } from "./todo.js";
+import { todos } from "./todo.js";
 import {
   sortByName,
   sortByDueDate,
