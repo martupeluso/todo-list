@@ -41,7 +41,7 @@ function isThisWeek(dueDate) {
 
   return (
     (isToday(dueDate) || isAfter(dueDate, today)) &&
-    isBefore(dueDate, endOfWeek(today))
+    isBefore(dueDate, endOfWeek(today, { weekStartsOn: 1 }))
   );
 }
 
@@ -57,4 +57,11 @@ function formatDate(date) {
   }
 }
 
-export { sortByName, sortByDueDate, sortByPriority, filterByToday, formatDate };
+export {
+  sortByName,
+  sortByDueDate,
+  sortByPriority,
+  filterByToday,
+  filterByThisWeek,
+  formatDate,
+};
