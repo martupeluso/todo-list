@@ -1,6 +1,8 @@
 import "./styles.css";
+import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
 import { addNewTodo, deleteTodo } from "./todo.js";
+import { filterByToday } from "./utils.js";
 
 const projectName = document.querySelector(".project-name");
 
@@ -8,13 +10,20 @@ let currentProject = "Inbox";
 let currentSort = "Name";
 
 showProjects();
-showTodos(currentProject, currentSort);
+renderTodos();
 
 const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
   currentProject = "Inbox";
-  showTodos(currentProject, currentSort);
+  renderTodos();
   projectName.textContent = currentProject;
+});
+
+const today = document.querySelector(".today");
+today.addEventListener("click", () => {
+  currentProject = null;
+  renderTodos();
+  projectName.textContent = "Today";
 });
 
 const projectsList = document.querySelector(".projects-list");
@@ -23,7 +32,7 @@ projectsList.addEventListener("click", (e) => {
 
   if (project) {
     currentProject = project.textContent;
-    showTodos(currentProject, currentSort);
+    renderTodos();
     projectName.textContent = currentProject;
   }
 });
@@ -37,7 +46,7 @@ sortButtons.addEventListener("click", (e) => {
     radio.checked = true;
     currentSort = radio.value;
 
-    showTodos(currentProject, currentSort);
+    renderTodos();
   }
 });
 
@@ -66,7 +75,7 @@ form.addEventListener("submit", () => {
 
   modal.close();
   form.reset();
-  showTodos(currentProject, currentSort);
+  renderTodos();
   showProjects();
 });
 
@@ -94,6 +103,15 @@ confirmDelete.addEventListener("click", () => {
   let id = todoToDelete.getAttribute("data-id");
 
   deleteTodo(id);
-  showTodos(currentProject, currentSort);
+  renderTodos();
   deleteModal.close();
 });
+
+function renderTodos() {
+  if (currentProject === null) {
+    const filteredTodos = filterByToday(todos);
+    showTodos(filteredTodos, currentProject, currentSort);
+  } else {
+    showTodos(todos, currentProject, currentSort);
+  }
+}

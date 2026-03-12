@@ -1,5 +1,4 @@
 import { projects } from "./project.js";
-import { todos } from "./todo.js";
 import {
   sortByName,
   sortByDueDate,
@@ -23,7 +22,7 @@ function showProjects() {
   }
 }
 
-function showTodos(currentProject, currentSort) {
+function showTodos(todos, currentProject, currentSort) {
   todosList.textContent = "";
 
   let sortedTodos;
@@ -37,7 +36,7 @@ function showTodos(currentProject, currentSort) {
   }
 
   for (let todo of sortedTodos) {
-    if (todo.project === currentProject) {
+    if (todo.project === currentProject || currentProject === null) {
       const div = document.createElement("div");
       div.classList.add("todo-div");
       div.setAttribute("data-id", todo.id);

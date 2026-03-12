@@ -58,4 +58,4 @@ function formatDate(date) {
   }
 }
 
-export { sortByName, sortByDueDate, sortByPriority, formatDate };
+export { sortByName, sortByDueDate, sortByPriority, filterByToday, formatDate };
