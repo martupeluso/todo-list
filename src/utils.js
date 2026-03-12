@@ -2,7 +2,6 @@ import {
   compareAsc,
   isToday,
   isTomorrow,
-  parseISO,
   isAfter,
   isBefore,
   endOfWeek,
@@ -26,11 +25,11 @@ function sortByDueDate(todos) {
 }
 
 function filterByToday(todos) {
-  return todos.filter((todo) => isToday(parseISO(todo.dueDate)));
+  return todos.filter((todo) => isToday(todo.dueDate));
 }
 
 function filterByThisWeek(todos) {
-  return todos.filter((todo) => isThisWeek(parseISO(todo.dueDate)));
+  return todos.filter((todo) => isThisWeek(todo.dueDate));
 }
 
 function filterByPriority(todos, priority) {
