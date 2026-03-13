@@ -2,7 +2,7 @@ import "./styles.css";
 import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
 import { addNewTodo, deleteTodo } from "./todo.js";
-import { filterByToday, filterByThisWeek } from "./utils.js";
+import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
 
 const projectName = document.querySelector(".project-name");
 
@@ -31,6 +31,17 @@ upcoming.addEventListener("click", () => {
   projectName.textContent = "Upcoming";
   currentProject = null;
   renderTodos();
+});
+
+const filtersList = document.querySelector(".filters-list");
+filtersList.addEventListener("click", (e) => {
+  let filter = e.target.closest("li");
+
+  if (filter) {
+    projectName.textContent = filter.textContent;
+    currentProject = null;
+    renderTodos();
+  }
 });
 
 const projectsList = document.querySelector(".projects-list");
@@ -123,6 +134,11 @@ function renderTodos() {
       showTodos(filteredTodos, currentProject, currentSort);
     } else if (projectName.textContent === "Upcoming") {
       filteredTodos = filterByThisWeek(todos);
+      showTodos(filteredTodos, currentProject, currentSort);
+    } else {
+      let priority = projectName.textContent.at(-1);
+      filteredTodos = filterByPriority(todos, priority);
+
       showTodos(filteredTodos, currentProject, currentSort);
     }
   } else {

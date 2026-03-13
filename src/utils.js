@@ -63,5 +63,6 @@ export {
   sortByPriority,
   filterByToday,
   filterByThisWeek,
+  filterByPriority,
   formatDate,
 };
