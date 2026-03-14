@@ -2,10 +2,10 @@ import {
   compareAsc,
   isToday,
   isTomorrow,
-  isAfter,
-  isBefore,
-  endOfWeek,
+  startOfDay,
+  addDays,
   format,
+  isWithinInterval,
 } from "date-fns";
 
 function sortByName(todos) {
@@ -37,12 +37,10 @@ function filterByPriority(todos, priority) {
 }
 
 function isThisWeek(dueDate) {
-  let today = new Date();
+  let today = startOfDay(new Date());
+  let sevenDaysFromToday = addDays(today, 7);
 
-  return (
-    (isToday(dueDate) || isAfter(dueDate, today)) &&
-    isBefore(dueDate, endOfWeek(today, { weekStartsOn: 1 }))
-  );
+  return isWithinInterval(dueDate, { start: today, end: sevenDaysFromToday });
 }
 
 function formatDate(date) {
