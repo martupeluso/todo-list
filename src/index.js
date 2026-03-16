@@ -130,11 +130,14 @@ confirmDelete.addEventListener("click", () => {
   if (todos.some((todo) => todo.id === id)) {
     deleteTodo(id);
   } else if (projects.some((project) => project.id === id)) {
+    let deletedProjectName = itemToDelete.textContent;
+    deleteTodosFromProject(deletedProjectName);
     deleteProject(id);
     showProjects();
     currentProject = "Inbox";
     projectName.textContent = currentProject;
   }
+
   renderTodos();
   deleteModal.close();
 });
@@ -157,5 +160,12 @@ function renderTodos() {
     }
   } else {
     showTodos(todos, currentProject, currentSort);
+  }
+}
+
+function deleteTodosFromProject(project) {
+  const todosToDelete = todos.filter((todo) => todo.project === project);
+  for (let todo of todosToDelete) {
+    deleteTodo(todo.id);
   }
 }
