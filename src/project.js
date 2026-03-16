@@ -29,4 +29,4 @@ if (!projects.some((project) => project.name === "Inbox")) {
   addNewProject("Inbox");
 }
 
-export { projects, addNewProject };
+export { projects, addNewProject, deleteProject };

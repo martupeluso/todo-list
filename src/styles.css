@@ -303,12 +303,13 @@ ol {
   vertical-align: -1px;
 }
 
-.todo-div .delete-button {
+.delete-button {
   margin-left: auto;
   align-self: flex-end;
 }
 
-.todo-div:hover .delete-button::before {
+.todo-div:hover .delete-button::before,
+.projects-list li:hover .delete-button::before {
   content: "";
   cursor: pointer;
   display: inline-block;
@@ -318,6 +319,12 @@ ol {
   background-size: contain;
   margin-right: 6px;
   vertical-align: -1px;
+}
+
+.projects-list li:hover .delete-button::before {
+  width: 14px;
+  height: 14px;
+  vertical-align: -3px;
 }
 
 .todo-div p {

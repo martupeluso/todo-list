@@ -16,7 +16,12 @@ function showProjects() {
     if (project.name !== "Inbox") {
       const projectItem = document.createElement("li");
       projectItem.textContent = project.name;
+      projectItem.setAttribute("data-id", project.id);
 
+      const deleteButton = document.createElement("span");
+      deleteButton.classList.add("delete-button");
+
+      projectItem.appendChild(deleteButton);
       projectsList.appendChild(projectItem);
     }
   }

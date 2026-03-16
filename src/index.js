@@ -1,6 +1,7 @@
 import "./styles.css";
 import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
+import { projects, deleteProject } from "./project.js";
 import { addNewTodo, deleteTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
 
@@ -8,6 +9,8 @@ const projectName = document.querySelector(".project-name");
 
 let currentProject = "Inbox";
 let currentSort = "Name";
+
+let itemToDelete = null;
 
 showProjects();
 renderTodos();
@@ -46,12 +49,18 @@ filtersList.addEventListener("click", (e) => {
 
 const projectsList = document.querySelector(".projects-list");
 projectsList.addEventListener("click", (e) => {
-  let project = e.target.closest("li");
+  if (e.target.classList.contains("delete-button")) {
+    itemToDelete = e.target.closest("li");
 
-  if (project) {
-    currentProject = project.textContent;
-    renderTodos();
-    projectName.textContent = currentProject;
+    deleteModal.showModal();
+  } else {
+    let project = e.target.closest("li");
+
+    if (project) {
+      projectName.textContent = currentProject;
+      currentProject = project.textContent;
+      renderTodos();
+    }
   }
 });
 
@@ -102,12 +111,10 @@ const deleteModal = document.querySelector(".delete-modal");
 const cancelDelete = document.querySelector(".delete-modal .cancel-button");
 const confirmDelete = document.querySelector(".delete-modal .delete-button");
 
-let todoToDelete = null;
-
 const todosList = document.querySelector(".todos");
 todosList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-button")) {
-    todoToDelete = e.target.closest("div");
+    itemToDelete = e.target.closest("div");
 
     deleteModal.showModal();
   }
@@ -118,9 +125,16 @@ cancelDelete.addEventListener("click", () => {
 });
 
 confirmDelete.addEventListener("click", () => {
-  let id = todoToDelete.getAttribute("data-id");
+  let id = itemToDelete.getAttribute("data-id");
 
-  deleteTodo(id);
+  if (todos.some((todo) => todo.id === id)) {
+    deleteTodo(id);
+  } else if (projects.some((project) => project.id === id)) {
+    deleteProject(id);
+    showProjects();
+    currentProject = "Inbox";
+    projectName.textContent = currentProject;
+  }
   renderTodos();
   deleteModal.close();
 });
