@@ -25,6 +25,14 @@ function showProjects() {
 function showTodos(todos, currentProject, currentSort) {
   todosList.textContent = "";
 
+  if (
+    todos.length === 0 ||
+    (!todos.some((todo) => todo.project === currentProject) &&
+      currentProject !== null)
+  ) {
+    showEmptyViewMessage();
+  }
+
   let sortedTodos;
 
   if (currentSort === "Name") {
@@ -70,6 +78,13 @@ function showTodos(todos, currentProject, currentSort) {
       todosList.append(div, hr);
     }
   }
+}
+
+function showEmptyViewMessage() {
+  const p = document.createElement("p");
+  p.textContent = "Nothing to see here!";
+
+  todosList.appendChild(p);
 }
 
 export { showProjects, showTodos };

@@ -250,6 +250,10 @@ ol {
   height: 25px;
 }
 
+.todos > :not(div) {
+  color: var(--light-text);
+}
+
 .todo-div {
   display: flex;
   gap: 12px;
