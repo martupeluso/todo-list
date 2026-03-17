@@ -1,7 +1,7 @@
 import "./styles.css";
 import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
-import { projects, deleteProject } from "./project.js";
+import { projects, addNewProject, deleteProject } from "./project.js";
 import { addNewTodo, deleteTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
 
@@ -57,11 +57,43 @@ projectsList.addEventListener("click", (e) => {
     let project = e.target.closest("li");
 
     if (project) {
-      projectName.textContent = currentProject;
       currentProject = project.textContent;
+      projectName.textContent = currentProject;
       renderTodos();
     }
   }
+});
+
+const addProjectButton = document.querySelector(".add-new-project");
+addProjectButton.addEventListener("click", () => {
+  let li = document.createElement("li");
+  let newProject = document.createElement("p");
+  newProject.contentEditable = true;
+
+  newProject.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      if (newProject.textContent) {
+        addNewProject(newProject.textContent);
+        newProject.contentEditable = false;
+        currentProject = newProject.textContent;
+        projectName.textContent = currentProject;
+        showProjects();
+        renderTodos();
+      }
+    }
+  });
+
+  newProject.addEventListener("blur", () => {
+    if (!newProject.textContent) {
+      li.remove();
+    }
+  });
+
+  li.appendChild(newProject);
+  projectsList.append(li);
+  newProject.focus();
 });
 
 const sortButtons = document.querySelector(".sort-options ul");
