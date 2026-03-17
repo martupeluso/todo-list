@@ -148,7 +148,6 @@ const editModal = document.querySelector(".edit-modal");
 const editForm = document.querySelector(".edit-modal form");
 
 const cancelEdit = document.querySelector(".edit-modal .cancel");
-const confirmEdit = document.querySelector(".edit-modal .confirm");
 
 const newTitle = document.querySelector(".edit-modal #new-title");
 const newDescription = document.querySelector(".edit-modal #new-description");
