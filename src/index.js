@@ -2,7 +2,7 @@ import "./styles.css";
 import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
 import { projects, addNewProject, deleteProject } from "./project.js";
-import { addNewTodo, deleteTodo } from "./todo.js";
+import { addNewTodo, deleteTodo, editTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
 
 const projectName = document.querySelector(".project-name");
@@ -11,6 +11,7 @@ let currentProject = "Inbox";
 let currentSort = "Name";
 
 let itemToDelete = null;
+let itemToEdit = null;
 
 showProjects();
 renderTodos();
@@ -143,17 +144,63 @@ const deleteModal = document.querySelector(".delete-modal");
 const cancelDelete = document.querySelector(".delete-modal .cancel-button");
 const confirmDelete = document.querySelector(".delete-modal .delete-button");
 
+const editModal = document.querySelector(".edit-modal");
+
+const cancelEdit = document.querySelector(".edit-modal .cancel");
+const confirmEdit = document.querySelector(".edit-modal .confirm");
+
+const newTitle = document.querySelector(".edit-modal #new-title");
+const newDescription = document.querySelector(".edit-modal #new-description");
+const newDate = document.querySelector(".edit-modal #new-datetime");
+const newProject = document.querySelector(".edit-modal #new-project-choice");
+const newPriority = document.querySelector(".edit-modal #new-priority");
+
 const todosList = document.querySelector(".todos");
 todosList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-button")) {
     itemToDelete = e.target.closest("div");
 
     deleteModal.showModal();
+  } else {
+    itemToEdit = e.target.closest("div[data-id]");
+
+    if (!itemToEdit) return;
+
+    editModal.showModal();
+
+    let id = itemToEdit.getAttribute("data-id");
+    let todo = todos.find((todo) => todo.id === id);
+
+    newTitle.value = todo.title;
+    newDescription.value = todo.description;
+    newDate.value = todo.dueDate.slice(0, 16);
+    newProject.value = todo.project;
+    newPriority.value = todo.priority;
   }
+});
+
+cancelEdit.addEventListener("click", () => {
+  editModal.close();
 });
 
 cancelDelete.addEventListener("click", () => {
   deleteModal.close();
+});
+
+confirmEdit.addEventListener("click", () => {
+  let id = itemToEdit.getAttribute("data-id");
+
+  if (todos.some((todo) => todo.id === id)) {
+    let title = newTitle.value;
+    let description = newDescription.value;
+    let dueDate = newDate.value;
+    let priority = newPriority.value;
+    let project = newProject.value;
+
+    editTodo(id, title, description, dueDate, priority, project);
+    showProjects();
+    renderTodos();
+  }
 });
 
 confirmDelete.addEventListener("click", () => {

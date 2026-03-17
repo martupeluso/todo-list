@@ -118,5 +118,35 @@
         <button class="delete-button">Delete</button>
       </div>
     </dialog>
+    <dialog class="modal edit-modal">
+      <form method="dialog">
+        <div class="dialog-header">
+          <input type="text" placeholder="Todo title" id="new-title"
+            name="new-title" required>
+          <img src="./assets/icons/x.svg" alt="" class="cancel">
+          <button type="submit"><img src="./assets/icons/check.svg" alt=""
+              class="confirm"></button>
+        </div>
+        <textarea placeholder="Description" id="new-description"
+          name="new-description"></textarea>
+        <div class="todo-info">
+          <label for="datetime">Date: </label>
+          <input type="datetime-local" name="new-datetime" id="new-datetime">
+          <label for="project-choice">Project: </label>
+          <input list="project" name="new-project-choice"
+            id="new-project-choice" placeholder="Inbox">
+          <datalist id="new-project">
+            <option value="Inbox">Inbox</option>
+          </datalist>
+          <label for="priority">Priority: </label>
+          <select name="new-priority" id="new-priority">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+          </select>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>

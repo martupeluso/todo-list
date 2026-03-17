@@ -46,15 +46,7 @@ function deleteTodo(id) {
   saveToLocalStorage("todos", todos);
 }
 
-function editTodo(
-  id,
-  title,
-  description,
-  dueDate,
-  priority,
-  project,
-  completed,
-) {
+function editTodo(id, title, description, dueDate, priority, project) {
   let chosenTodo = todos.find((todo) => todo.id === id);
 
   chosenTodo.title = title;
@@ -62,9 +54,14 @@ function editTodo(
   chosenTodo.dueDate = dueDate;
   chosenTodo.priority = priority;
   chosenTodo.project = project;
-  chosenTodo.completed = completed;
+
+  let projectExists = projects.some((project) => project.name === project);
+
+  if (!projectExists) {
+    addNewProject(project);
+  }
 
   saveToLocalStorage("todos", todos);
 }
 
-export { todos, addNewTodo, deleteTodo };
+export { todos, addNewTodo, deleteTodo, editTodo };

@@ -402,7 +402,8 @@ button[type="submit"] {
   border: none;
 }
 
-#project-choice {
+#project-choice,
+#new-project-choice {
   width: 100%;
 }
 
