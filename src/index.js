@@ -78,12 +78,18 @@ addProjectButton.addEventListener("click", () => {
       e.preventDefault();
 
       if (newProject.textContent) {
-        addNewProject(newProject.textContent);
-        newProject.contentEditable = false;
-        currentProject = newProject.textContent;
-        projectName.textContent = currentProject;
-        showProjects();
-        renderTodos();
+        let projectExists = projects.some(
+          (project) => project.name === newProject.textContent,
+        );
+
+        if (!projectExists) {
+          addNewProject(newProject.textContent);
+          newProject.contentEditable = false;
+          currentProject = newProject.textContent;
+          projectName.textContent = currentProject;
+          showProjects();
+          renderTodos();
+        }
       }
     }
   });
