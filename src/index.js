@@ -145,6 +145,7 @@ const cancelDelete = document.querySelector(".delete-modal .cancel-button");
 const confirmDelete = document.querySelector(".delete-modal .delete-button");
 
 const editModal = document.querySelector(".edit-modal");
+const editForm = document.querySelector(".edit-modal form");
 
 const cancelEdit = document.querySelector(".edit-modal .cancel");
 const confirmEdit = document.querySelector(".edit-modal .confirm");
@@ -167,6 +168,7 @@ todosList.addEventListener("click", (e) => {
     if (!itemToEdit) return;
 
     editModal.showModal();
+    document.querySelector("#new-title").focus();
 
     let id = itemToEdit.getAttribute("data-id");
     let todo = todos.find((todo) => todo.id === id);
@@ -187,7 +189,7 @@ cancelDelete.addEventListener("click", () => {
   deleteModal.close();
 });
 
-confirmEdit.addEventListener("click", () => {
+editForm.addEventListener("submit", () => {
   let id = itemToEdit.getAttribute("data-id");
 
   if (todos.some((todo) => todo.id === id)) {
