@@ -129,7 +129,8 @@ cancelModal.addEventListener("click", () => {
 form.addEventListener("submit", () => {
   let title = document.querySelector("#title").value;
   let description = document.querySelector("#description").value;
-  let dueDate = document.querySelector("#datetime").value || new Date();
+  let dueDate =
+    document.querySelector("#datetime").value || new Date().toISOString();
   let priority = document.querySelector("#priority").value;
   let project = document.querySelector("#project-choice").value || "Inbox";
   let completed = false;
