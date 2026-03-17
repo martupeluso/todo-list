@@ -8,6 +8,7 @@ import {
 
 const projectsList = document.querySelector(".projects-list");
 const todosList = document.querySelector(".todos");
+const completedTodosList = document.querySelector(".completed-todos");
 
 function showProjects() {
   projectsList.textContent = "";
@@ -29,9 +30,11 @@ function showProjects() {
 
 function showTodos(todos, currentProject, currentSort) {
   todosList.textContent = "";
+  completedTodosList.textContent = "";
 
   if (
     todos.length === 0 ||
+    todos.every((todo) => todo.completed) ||
     (!todos.some((todo) => todo.project === currentProject) &&
       currentProject !== null)
   ) {
@@ -56,6 +59,7 @@ function showTodos(todos, currentProject, currentSort) {
 
       const input = document.createElement("input");
       input.type = "checkbox";
+      input.checked = todo.completed;
 
       const todoDataDiv = document.createElement("div");
 
@@ -80,7 +84,12 @@ function showTodos(todos, currentProject, currentSort) {
       todoDataDiv.append(todoName, todoDescription, todoDate, todoPriority);
 
       div.append(input, todoDataDiv, deleteButton);
-      todosList.append(div, hr);
+
+      if (todo.completed) {
+        completedTodosList.append(div, hr);
+      } else {
+        todosList.append(div, hr);
+      }
     }
   }
 }

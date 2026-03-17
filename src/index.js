@@ -4,6 +4,7 @@ import { showProjects, showTodos } from "./dom.js";
 import { projects, addNewProject, deleteProject } from "./project.js";
 import { addNewTodo, deleteTodo, editTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
+import { saveToLocalStorage } from "./storage.js";
 
 const projectName = document.querySelector(".project-name");
 
@@ -12,6 +13,7 @@ let currentSort = "Name";
 
 let itemToDelete = null;
 let itemToEdit = null;
+let itemToComplete = null;
 
 showProjects();
 renderTodos();
@@ -161,6 +163,14 @@ todosList.addEventListener("click", (e) => {
     itemToDelete = e.target.closest("div");
 
     deleteModal.showModal();
+  } else if (e.target.tagName === "INPUT") {
+    itemToComplete = e.target.closest("div[data-id]");
+    let id = itemToComplete.getAttribute("data-id");
+    let todo = todos.find((todo) => todo.id === id);
+
+    todo.completed = !todo.completed;
+    saveToLocalStorage("todos", todos);
+    renderTodos();
   } else {
     itemToEdit = e.target.closest("div[data-id]");
 
@@ -177,6 +187,23 @@ todosList.addEventListener("click", (e) => {
     newDate.value = todo.dueDate.slice(0, 16);
     newProject.value = todo.project;
     newPriority.value = todo.priority;
+  }
+});
+
+const completedTodosList = document.querySelector(".completed-todos");
+completedTodosList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-button")) {
+    itemToDelete = e.target.closest("div");
+
+    deleteModal.showModal();
+  } else if (e.target.tagName === "INPUT") {
+    let itemToUncomplete = e.target.closest("div[data-id]");
+    let id = itemToUncomplete.getAttribute("data-id");
+    let todo = todos.find((todo) => todo.id === id);
+
+    todo.completed = !todo.completed;
+    saveToLocalStorage("todos", todos);
+    renderTodos();
   }
 });
 
