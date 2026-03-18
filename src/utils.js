@@ -1,5 +1,6 @@
 import {
   compareAsc,
+  isYesterday,
   isToday,
   isTomorrow,
   startOfDay,
@@ -46,6 +47,8 @@ function isThisWeek(dueDate) {
 function formatDate(date) {
   if (isToday(date)) {
     return `Today ${format(date, "HH:mm")}`;
+  } else if (isYesterday(date)) {
+    return `Yesterday ${format(date, "HH:mm")}`;
   } else if (isTomorrow(date)) {
     return `Tomorrow ${format(date, "HH:mm")}`;
   } else if (isThisWeek(date)) {
