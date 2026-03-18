@@ -9,6 +9,15 @@ import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 const projectName = document.querySelector(".project-name");
 
 let currentTheme = getFromLocalStorage("theme") || "light";
+document.documentElement.classList = currentTheme;
+
+let themeButtons = document.querySelectorAll(".theme-picker button");
+themeButtons.forEach((button) => {
+  const radio = button.querySelector("input[type='radio'");
+  if (radio.value === currentTheme) {
+    radio.checked = true;
+  }
+});
 
 let currentProject = "Inbox";
 let currentSort = "Name";
