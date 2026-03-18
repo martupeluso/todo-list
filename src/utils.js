@@ -45,6 +45,10 @@ function isThisWeek(dueDate) {
 }
 
 function formatDate(date) {
+  if (!date) {
+    return "No date";
+  }
+
   if (isToday(date)) {
     return `Today ${format(date, "HH:mm")}`;
   } else if (isYesterday(date)) {
