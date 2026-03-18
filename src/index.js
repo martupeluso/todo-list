@@ -4,11 +4,12 @@ import { showProjects, showTodos } from "./dom.js";
 import { projects, addNewProject, deleteProject } from "./project.js";
 import { addNewTodo, deleteTodo, editTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
-import { saveToLocalStorage } from "./storage.js";
+import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 
 const projectName = document.querySelector(".project-name");
 
-let currentTheme = "light";
+let currentTheme = getFromLocalStorage("theme") || "light";
+
 let currentProject = "Inbox";
 let currentSort = "Name";
 
@@ -28,6 +29,7 @@ themePicker.addEventListener("click", (e) => {
     radio.checked = true;
     currentTheme = radio.value;
     document.documentElement.classList = currentTheme;
+    saveToLocalStorage("theme", currentTheme);
   }
 });
 
