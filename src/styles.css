@@ -22,13 +22,30 @@
   --font-stack:
     system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --accent: #ffc300;
+}
+
+:root.light {
   --text: #000;
   --main-bg: #fff;
-  --accent: #ffc300;
   --selection: #ffecc9;
   --sidebar-bg: #f8f8f8;
   --miscellaneous: #d9d9d9;
   --light-text: #828282;
+}
+
+:root.dark {
+  --text: #fff;
+  --main-bg: #2d2d2d;
+  --selection: #65530b;
+  --sidebar-bg: #272727;
+  --miscellaneous: #707070;
+  --light-text: #969696;
+}
+
+:root.dark *::before,
+:root.dark img[src$="svg"]:not(.add-new-todo img):not(.theme-picker img) {
+  filter: invert(1);
 }
 
 ::selection {
@@ -41,6 +58,7 @@
   padding: 0;
   font-family: "Josefin Sans", var(--font-stack);
   font-weight: 400;
+  color: var(--text);
 }
 
 body {
@@ -202,6 +220,7 @@ ol {
 .main-header .sort-options ul li label {
   display: block;
   cursor: pointer;
+  color: #000;
 }
 
 .main-header .sort-options ul li input[type="radio"] {
@@ -233,8 +252,16 @@ ol {
   height: 20px;
 }
 
-.theme-picker button:hover {
+.theme-picker input {
+  display: none;
+}
+
+.theme-picker :hover {
   cursor: pointer;
+  background-color: var(--accent);
+}
+
+.theme-picker button:has(input:checked) {
   background-color: var(--accent);
 }
 
@@ -290,6 +317,7 @@ ol {
   height: 18px;
   background-image: url(./assets/icons/check.svg);
   background-size: contain;
+  filter: invert(0);
 }
 
 .todo-div .todo-date::before {
@@ -345,6 +373,10 @@ ol {
   color: var(--light-text);
 }
 
+:root.dark .modal {
+  background-color: #212121;
+}
+
 .modal[open] {
   display: flex;
   flex-direction: column;
@@ -391,6 +423,12 @@ ol {
   margin-top: auto;
 }
 
+.modal .todo-info input,
+.modal .todo-info select,
+.modal .todo-info option {
+  color: #000;
+}
+
 .modal input[type="text"]:focus,
 .modal textarea:focus {
   outline: 2px solid var(--miscellaneous);
@@ -424,6 +462,7 @@ button[type="submit"] {
   border-radius: 15px;
   border: none;
   cursor: pointer;
+  color: #000;
 }
 
 .delete-modal button:hover {

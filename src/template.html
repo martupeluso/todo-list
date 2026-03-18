@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,10 +76,19 @@
       <ul class="completed-todos"></ul>
     </div>
     <div class="theme-picker">
-      <button class="light-theme"><img src="./assets/icons/sun.svg"
-          alt=""></button>
-      <button class="dark-theme"><img src="./assets/icons/moon.svg"
-          alt=""></button>
+      <button>
+        <label for="light-theme">
+          <img src="./assets/icons/sun.svg" alt="">
+          <input type="radio" name="theme" id="light-theme" value="light"
+            checked>
+        </label>
+      </button>
+      <button>
+        <label for="dark-theme">
+          <img src="./assets/icons/moon.svg" alt="">
+          <input type="radio" name="theme" id="dark-theme" value="dark">
+        </label>
+      </button>
     </div>
     <dialog class="modal">
       <form method="dialog">

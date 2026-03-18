@@ -8,6 +8,7 @@ import { saveToLocalStorage } from "./storage.js";
 
 const projectName = document.querySelector(".project-name");
 
+let currentTheme = "light";
 let currentProject = "Inbox";
 let currentSort = "Name";
 
@@ -17,6 +18,18 @@ let itemToComplete = null;
 
 showProjects();
 renderTodos();
+
+const themePicker = document.querySelector(".theme-picker");
+themePicker.addEventListener("click", (e) => {
+  const button = e.target.closest("button");
+
+  if (button) {
+    const radio = button.querySelector("input[type='radio']");
+    radio.checked = true;
+    currentTheme = radio.value;
+    document.documentElement.classList = currentTheme;
+  }
+});
 
 const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
