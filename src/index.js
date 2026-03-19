@@ -136,6 +136,8 @@ const cancelModal = document.querySelector(".modal .cancel");
 
 const addButton = document.querySelector(".add-new-todo");
 addButton.addEventListener("click", () => {
+  let projectInput = document.querySelector("#project-choice");
+  projectInput.placeholder = currentProject || "Inbox";
   modal.showModal();
 });
 
@@ -149,7 +151,10 @@ form.addEventListener("submit", () => {
   let description = document.querySelector("#description").value;
   let dueDate = document.querySelector("#datetime").value;
   let priority = document.querySelector("#priority").value;
-  let project = document.querySelector("#project-choice").value || "Inbox";
+  let project =
+    document.querySelector("#project-choice").value ||
+    currentProject ||
+    "Inbox";
   let completed = false;
   addNewTodo(title, description, dueDate, priority, project, completed);
 
