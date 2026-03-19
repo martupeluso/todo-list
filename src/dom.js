@@ -76,12 +76,22 @@ function showTodos(todos, currentProject, currentSort) {
       const todoPriority = document.createElement("span");
       todoPriority.textContent = ` — P${todo.priority}`;
 
+      const todoProject = document.createElement("span");
+      todoProject.classList.add("project-display");
+      todoProject.textContent = `${todo.project}`;
+
       const deleteButton = document.createElement("span");
       deleteButton.classList.add("delete-button");
 
       const hr = document.createElement("hr");
 
-      todoDataDiv.append(todoName, todoDescription, todoDate, todoPriority);
+      todoDataDiv.append(
+        todoName,
+        todoDescription,
+        todoDate,
+        todoPriority,
+        todoProject,
+      );
 
       div.append(input, todoDataDiv, deleteButton);
 

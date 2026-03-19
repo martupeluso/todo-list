@@ -280,6 +280,17 @@ ol {
   height: 25px;
 }
 
+.project-display::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url("./assets/icons/folder.svg");
+  margin: 0px 8px;
+  background-size: contain;
+  vertical-align: -1px;
+}
+
 .todos > :not(div) {
   color: var(--light-text);
 }
