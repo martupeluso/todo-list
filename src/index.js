@@ -11,7 +11,7 @@ const projectName = document.querySelector(".project-name");
 let currentTheme = getFromLocalStorage("theme") || "light";
 document.documentElement.classList = currentTheme;
 
-let themeButtons = document.querySelectorAll(".theme-picker button");
+let themeButtons = document.querySelectorAll(".theme-picker div");
 themeButtons.forEach((button) => {
   const radio = button.querySelector("input[type='radio'");
   if (radio.value === currentTheme) {
@@ -31,7 +31,7 @@ renderTodos();
 
 const themePicker = document.querySelector(".theme-picker");
 themePicker.addEventListener("click", (e) => {
-  const button = e.target.closest("button");
+  const button = e.target.closest("div");
 
   if (button) {
     const radio = button.querySelector("input[type='radio']");

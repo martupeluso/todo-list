@@ -240,14 +240,14 @@ ol {
   gap: 12px;
 }
 
-.theme-picker button {
+.theme-picker div {
   background-color: var(--miscellaneous);
   border: none;
-  padding: 10px 10px 8px 10px;
+  padding: 10px 10px 2px 10px;
   border-radius: 30px;
 }
 
-.theme-picker button img {
+.theme-picker div img {
   width: 20px;
   height: 20px;
 }
@@ -261,7 +261,7 @@ ol {
   background-color: var(--accent);
 }
 
-.theme-picker button:has(input:checked) {
+.theme-picker div:has(input:checked) {
   background-color: var(--accent);
 }
 
