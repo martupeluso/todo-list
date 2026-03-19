@@ -397,7 +397,8 @@ ol {
   vertical-align: middle;
 }
 
-.modal input[type="text"] {
+.modal #title,
+.modal #new-title {
   padding: 8px;
   font-size: 1.5rem;
   background-color: inherit;
@@ -429,7 +430,8 @@ ol {
   color: #000;
 }
 
-.modal input[type="text"]:focus,
+.modal #title:focus,
+.modal #new-title:focus,
 .modal textarea:focus {
   outline: 2px solid var(--miscellaneous);
   border-radius: 8px;
