@@ -74,7 +74,8 @@ function showTodos(todos, currentProject, currentSort) {
       todoDate.classList.add("todo-date");
 
       const todoPriority = document.createElement("span");
-      todoPriority.textContent = ` — P${todo.priority}`;
+      todoPriority.classList.add("priority-display");
+      todoPriority.textContent = `P${todo.priority}`;
 
       const todoProject = document.createElement("span");
       todoProject.classList.add("project-display");
