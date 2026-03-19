@@ -72,6 +72,9 @@ body {
 .main,
 .sidebar {
   padding: 1rem 2rem;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--miscellaneous) var(--main-bg);
 }
 
 .sidebar {
