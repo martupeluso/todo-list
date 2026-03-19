@@ -44,23 +44,17 @@ themePicker.addEventListener("click", (e) => {
 
 const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
-  currentProject = "Inbox";
-  renderTodos();
-  projectName.textContent = currentProject;
+  updateCurrentProject("Inbox");
 });
 
 const today = document.querySelector(".today");
 today.addEventListener("click", () => {
-  projectName.textContent = "Today";
-  currentProject = null;
-  renderTodos();
+  updateCurrentProject(null, "Today");
 });
 
 const upcoming = document.querySelector(".upcoming");
 upcoming.addEventListener("click", () => {
-  projectName.textContent = "Upcoming";
-  currentProject = null;
-  renderTodos();
+  updateCurrentProject(null, "Upcoming");
 });
 
 const filtersList = document.querySelector(".filters-list");
@@ -68,9 +62,7 @@ filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest("li");
 
   if (filter) {
-    projectName.textContent = filter.textContent;
-    currentProject = null;
-    renderTodos();
+    updateCurrentProject(null, filter.textContent);
   }
 });
 
@@ -84,9 +76,7 @@ projectsList.addEventListener("click", (e) => {
     let project = e.target.closest("li");
 
     if (project) {
-      currentProject = project.textContent;
-      projectName.textContent = currentProject;
-      renderTodos();
+      updateCurrentProject(project.textContent);
     }
   }
 });
@@ -109,10 +99,8 @@ addProjectButton.addEventListener("click", () => {
         if (!projectExists) {
           addNewProject(newProject.textContent);
           newProject.contentEditable = false;
-          currentProject = newProject.textContent;
-          projectName.textContent = currentProject;
+          updateCurrentProject(newProject.textContent);
           showProjects();
-          renderTodos();
         }
       }
     }
@@ -266,16 +254,15 @@ confirmDelete.addEventListener("click", () => {
 
   if (todos.some((todo) => todo.id === id)) {
     deleteTodo(id);
+    renderTodos();
   } else if (projects.some((project) => project.id === id)) {
     let deletedProjectName = itemToDelete.textContent;
     deleteTodosFromProject(deletedProjectName);
     deleteProject(id);
     showProjects();
-    currentProject = "Inbox";
-    projectName.textContent = currentProject;
+    updateCurrentProject("Inbox");
   }
 
-  renderTodos();
   deleteModal.close();
 });
 
@@ -305,4 +292,10 @@ function deleteTodosFromProject(project) {
   for (let todo of todosToDelete) {
     deleteTodo(todo.id);
   }
+}
+
+function updateCurrentProject(project, name) {
+  projectName.textContent = project || name;
+  currentProject = project;
+  renderTodos();
 }
