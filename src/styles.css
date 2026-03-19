@@ -386,6 +386,7 @@ ol {
 
 .todo-div p {
   font-size: 0.9rem;
+  margin: 2px 0;
   color: var(--light-text);
 }
 
