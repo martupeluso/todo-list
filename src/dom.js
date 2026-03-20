@@ -10,8 +10,11 @@ const projectsList = document.querySelector(".projects-list");
 const todosList = document.querySelector(".todos");
 const completedTodosList = document.querySelector(".completed-todos");
 
+const selectProjectList = document.querySelector("#project-choice");
+
 function showProjects() {
   projectsList.textContent = "";
+  selectProjectList.textContent = "";
 
   for (let project of projects) {
     if (project.name !== "Inbox") {
@@ -25,6 +28,12 @@ function showProjects() {
       projectItem.appendChild(deleteButton);
       projectsList.appendChild(projectItem);
     }
+
+    const option = document.createElement("option");
+    option.value = project.name;
+    option.textContent = project.name;
+
+    selectProjectList.appendChild(option);
   }
 }
 
