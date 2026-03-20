@@ -1,3 +1,4 @@
+import { todos } from "./todo.js";
 import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 
 const projects = getFromLocalStorage("projects") || [];
@@ -25,8 +26,23 @@ function deleteProject(id) {
   saveToLocalStorage("projects", projects);
 }
 
+function editProject(id, newName) {
+  let project = projects.find((project) => project.id === id);
+
+  for (let todo of todos) {
+    if (todo.project === project.name) {
+      todo.project = newName;
+    }
+  }
+
+  project.name = newName;
+
+  saveToLocalStorage("projects", projects);
+  saveToLocalStorage("todos", todos);
+}
+
 if (!projects.some((project) => project.name === "Inbox")) {
   addNewProject("Inbox");
 }
 
-export { projects, addNewProject, deleteProject };
+export { projects, addNewProject, deleteProject, editProject };

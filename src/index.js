@@ -1,12 +1,36 @@
 import "./styles.css";
 import { todos } from "./todo.js";
 import { showProjects, showTodos } from "./dom.js";
-import { projects, addNewProject, deleteProject } from "./project.js";
+import {
+  projects,
+  addNewProject,
+  deleteProject,
+  editProject,
+} from "./project.js";
 import { addNewTodo, deleteTodo, editTodo } from "./todo.js";
 import { filterByToday, filterByThisWeek, filterByPriority } from "./utils.js";
 import { getFromLocalStorage, saveToLocalStorage } from "./storage.js";
 
 const projectName = document.querySelector(".project-name");
+projectName.addEventListener("mouseover", () => {
+  if (projectName.classList.contains("editable")) {
+    projectName.contentEditable = true;
+  }
+});
+
+projectName.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+
+    let newName = projectName.textContent;
+
+    editProject(currentProjectID, newName);
+    updateCurrentProject(currentProjectID, newName);
+
+    showProjects();
+    renderTodos();
+  }
+});
 
 let currentTheme = getFromLocalStorage("theme") || "light";
 document.documentElement.classList = currentTheme;
@@ -20,6 +44,7 @@ themeButtons.forEach((button) => {
 });
 
 let currentProject = "Inbox";
+let currentProjectID = null;
 let currentSort = "Name";
 
 let itemToDelete = null;
@@ -44,17 +69,17 @@ themePicker.addEventListener("click", (e) => {
 
 const inbox = document.querySelector(".inbox");
 inbox.addEventListener("click", () => {
-  updateCurrentProject("Inbox");
+  updateCurrentProject(null, "Inbox");
 });
 
 const today = document.querySelector(".today");
 today.addEventListener("click", () => {
-  updateCurrentProject(null, "Today");
+  updateCurrentProject(null, null, "Today");
 });
 
 const upcoming = document.querySelector(".upcoming");
 upcoming.addEventListener("click", () => {
-  updateCurrentProject(null, "Upcoming");
+  updateCurrentProject(null, null, "Upcoming");
 });
 
 const filtersList = document.querySelector(".filters-list");
@@ -62,7 +87,7 @@ filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest("li");
 
   if (filter) {
-    updateCurrentProject(null, filter.textContent);
+    updateCurrentProject(null, null, filter.textContent);
   }
 });
 
@@ -76,7 +101,8 @@ projectsList.addEventListener("click", (e) => {
     let project = e.target.closest("li");
 
     if (project) {
-      updateCurrentProject(project.textContent);
+      let id = project.getAttribute("data-id");
+      updateCurrentProject(id, project.textContent);
     }
   }
 });
@@ -99,7 +125,10 @@ addProjectButton.addEventListener("click", () => {
         if (!projectExists) {
           addNewProject(newProject.textContent);
           newProject.contentEditable = false;
-          updateCurrentProject(newProject.textContent);
+
+          let createdProject = projects.at(-1);
+
+          updateCurrentProject(createdProject.id, createdProject.name);
           showProjects();
         }
       }
@@ -265,7 +294,7 @@ confirmDelete.addEventListener("click", () => {
     deleteTodosFromProject(deletedProjectName);
     deleteProject(id);
     showProjects();
-    updateCurrentProject("Inbox");
+    updateCurrentProject(currentProjectID, "Inbox");
   }
 
   deleteModal.close();
@@ -299,7 +328,16 @@ function deleteTodosFromProject(project) {
   }
 }
 
-function updateCurrentProject(project, name) {
+function updateCurrentProject(id, project, name) {
+  if (project !== "Inbox" && project !== null) {
+    projectName.classList.add("editable");
+  } else {
+    projectName.classList.remove("editable");
+    projectName.contentEditable = false;
+  }
+
+  currentProjectID = id;
+
   projectName.textContent = project || name;
   currentProject = project;
   renderTodos();

@@ -198,6 +198,10 @@ ol {
   justify-content: space-between;
 }
 
+.main-header .project-name.editable:hover {
+  outline: 2px solid var(--miscellaneous);
+}
+
 .main-header .sort-options {
   display: flex;
   align-items: center;
