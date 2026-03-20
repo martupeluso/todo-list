@@ -6,7 +6,7 @@ This is a fully functional todo list application that allows users to create, ed
 
 The app includes several filtering options, such as viewing tasks due today or within the current week, as well as filtering by priority. Additionally, tasks inside each project can be sorted by name, due date, or priority.
 
-The main goal of this project was to keep practicing JavaScript modules and Webpack, this time on a larger-scale application.
+The main goal of this project was to continue practicing code organization with JavaScript modules and Webpack, this time on a larger-scale application.
 
 ## Credits
 
