@@ -22,6 +22,12 @@ projectName.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
 
+    let projectExists = projects.find(
+      (project) => project.name === projectName.textContent,
+    );
+
+    if (projectName.textContent === "" || projectExists) return;
+
     let newName = projectName.textContent;
 
     editProject(currentProjectID, newName);
