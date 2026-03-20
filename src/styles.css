@@ -39,8 +39,8 @@
   --main-bg: #2d2d2d;
   --selection: #65530b;
   --sidebar-bg: #272727;
-  --miscellaneous: #707070;
-  --light-text: #969696;
+  --miscellaneous: #bbb;
+  --light-text: #bbb;
 }
 
 :root.dark *::before,
@@ -83,6 +83,10 @@ body {
 
 hr {
   border: 1px solid var(--miscellaneous);
+}
+
+.dark hr {
+  border-color: #494949;
 }
 
 h1 + hr {
