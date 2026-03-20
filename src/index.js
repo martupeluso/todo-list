@@ -181,9 +181,11 @@ cancelModal.addEventListener("click", () => {
   form.reset();
 });
 
+let descriptionInput = document.querySelector("#description");
+
 form.addEventListener("submit", () => {
   let title = document.querySelector("#title").value;
-  let description = document.querySelector("#description").value;
+  let description = descriptionInput.value;
   let dueDate = document.querySelector("#datetime").value;
   let priority = document.querySelector("#priority").value;
   let project =
@@ -199,6 +201,13 @@ form.addEventListener("submit", () => {
   showProjects();
 });
 
+descriptionInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    form.requestSubmit();
+  }
+});
+
 const deleteModal = document.querySelector(".delete-modal");
 
 const cancelDelete = document.querySelector(".delete-modal .cancel-button");
@@ -211,6 +220,14 @@ const cancelEdit = document.querySelector(".edit-modal .cancel");
 
 const newTitle = document.querySelector(".edit-modal #new-title");
 const newDescription = document.querySelector(".edit-modal #new-description");
+
+newDescription.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    editForm.requestSubmit();
+  }
+});
+
 const newDate = document.querySelector(".edit-modal #new-datetime");
 const newProject = document.querySelector(".edit-modal #new-project-choice");
 const newPriority = document.querySelector(".edit-modal #new-priority");
