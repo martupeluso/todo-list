@@ -49,16 +49,24 @@ themeButtons.forEach((button) => {
   }
 });
 
-let currentProject = "Inbox";
+let currentProject = getFromLocalStorage("currentProject") || "Inbox";
 let currentProjectID = null;
-let currentSort = "Name";
+let currentSort = getFromLocalStorage("currentSort") || "Name";
+
+const sortOptions = document.querySelectorAll(".sort-options input");
+sortOptions.forEach((radio) => {
+  if (radio.value === currentSort) {
+    radio.checked = true;
+  }
+});
 
 let itemToDelete = null;
 let itemToEdit = null;
 let itemToComplete = null;
 
+updateCurrentProject(currentProject.id, currentProject);
+
 showProjects();
-renderTodos();
 
 const themePicker = document.querySelector(".theme-picker");
 themePicker.addEventListener("click", (e) => {
@@ -160,6 +168,8 @@ sortButtons.addEventListener("click", (e) => {
     const radio = li.querySelector("input[type='radio']");
     radio.checked = true;
     currentSort = radio.value;
+
+    saveToLocalStorage("currentSort", currentSort);
 
     renderTodos();
   }
@@ -363,5 +373,8 @@ function updateCurrentProject(id, project, name) {
 
   projectName.textContent = project || name;
   currentProject = project;
+
+  saveToLocalStorage("currentProject", currentProject);
+
   renderTodos();
 }
