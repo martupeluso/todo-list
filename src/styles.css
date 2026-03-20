@@ -184,7 +184,8 @@ h1 span {
 .today:hover,
 .upcoming:hover,
 .sidebar.left ol li:hover,
-.projects-list li:hover {
+.projects-list li:hover,
+.todos .add-new-todo:hover {
   cursor: pointer;
   background-color: var(--selection);
   border-radius: 15px;
@@ -317,6 +318,33 @@ ol {
 
 .todos > :not(div) {
   color: var(--light-text);
+}
+
+.todos .add-new-todo {
+  display: flex;
+  align-items: center;
+  padding: 4px 14px 4px 0;
+  background: none;
+  border: none;
+  margin-top: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.todos:has(.todo-div) .add-new-todo {
+  margin-left: 1rem;
+}
+
+.todos .add-new-todo::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url(./assets/icons/plus-circle.svg);
+  background-size: contain;
+  margin-right: 6px;
+  vertical-align: -1px;
 }
 
 .todo-div {

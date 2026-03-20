@@ -1,4 +1,5 @@
 import { projects } from "./project.js";
+import { modal } from "./index.js";
 import {
   sortByName,
   sortByDueDate,
@@ -120,6 +121,20 @@ function showTodos(todos, currentProject, currentSort) {
         todosList.append(div, hr);
       }
     }
+  }
+
+  if (currentProject !== null) {
+    const addNewTodoButton = document.createElement("button");
+    addNewTodoButton.classList.add("add-new-todo");
+    addNewTodoButton.textContent = "Add new todo";
+
+    addNewTodoButton.addEventListener("click", () => {
+      let projectInput = document.querySelector("#project-choice");
+      projectInput.value = currentProject || "Inbox";
+      modal.showModal();
+    });
+
+    todosList.appendChild(addNewTodoButton);
   }
 }
 

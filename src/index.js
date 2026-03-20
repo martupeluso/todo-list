@@ -175,7 +175,7 @@ sortButtons.addEventListener("click", (e) => {
   }
 });
 
-const modal = document.querySelector(".modal");
+export const modal = document.querySelector(".modal");
 const form = document.querySelector(".modal form");
 const cancelModal = document.querySelector(".modal .cancel");
 
