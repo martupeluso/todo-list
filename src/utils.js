@@ -22,7 +22,13 @@ function sortByPriority(todos) {
 }
 
 function sortByDueDate(todos) {
-  return todos.toSorted((a, b) => compareAsc(a.dueDate, b.dueDate));
+  return todos.toSorted((a, b) => {
+    if (!a.dueDate && b.dueDate) return 1;
+    if (a.dueDate && !b.dueDate) return -1;
+    if (!a.dueDate && !b.dueDate) return 0;
+
+    return compareAsc(a.dueDate, b.dueDate);
+  });
 }
 
 function filterByToday(todos) {
