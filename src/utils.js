@@ -46,7 +46,7 @@ function isThisWeek(dueDate) {
 
 function formatDate(date) {
   if (!date) {
-    return "No date";
+    return "—";
   }
 
   if (isToday(date)) {
