@@ -1,59 +1,14 @@
-# Webpack Template
+# Todo List
 
-## Setup
+Fourth project from [The Odin Project](https://www.theodinproject.com/)'s JavaScript Course, and the biggest one I've built so far!
 
-```console
-npm install
-```
+This is a fully functional todo list application that allows users to create, edit, and delete tasks, assign due dates and priority levels, and keep everything organized across multiple projects. Each project can also be renamed or removed.
 
-## Usage
+The app includes several filtering options, such as viewing tasks due today or within the current week, as well as filtering by priority. Additionally, tasks inside each project can be sorted by name, due date, or priority.
 
-```console
-# dev mode
-npm run dev
+The main goal of this project was to keep practicing JavaScript modules and Webpack, this time on a larger-scale application.
 
-# prod mode
-npm run build
+## Credits
 
-# gh-pages
-npm run deploy
-```
-
-## Optional Configuration
-
-For loading image files referenced directly in HTML:
-
-```console
-npm install --save-dev html-loader
-```
-
-```js
-// webpack.common.js
-
-{
-  test: /\.html$/i,
-  loader: "html-loader",
-}
-```
-
-For loading image files imported in JavaScript:
-
-```js
-// webpack.common.js
-
-{
-  test: /\.(png|svg|jpg|jpeg|gif)$/i,
-  type: "asset/resource",
-}
-```
-
-For loading font files:
-
-```js
-// webpack.common.js
-
-{
-  test: /\.(woff|woff2|eot|ttf|otf)$/i,
-  type: "asset/resource",
-}
-```
+- Font: ["Josefin Sans"](https://fonts.google.com/specimen/Josefin+Sans?preview.script=Latn) by Santiago Orozco / Google Fonts
+- Icons from [Feather Icons](https://feathericons.com/).
