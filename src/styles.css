@@ -403,8 +403,8 @@ ol {
   align-self: flex-end;
 }
 
-.todo-div:hover .delete-button::before,
-.projects-list li:hover .delete-button::before {
+.todo-div .delete-button::before,
+.projects-list li .delete-button::before {
   content: "";
   cursor: pointer;
   display: inline-block;
@@ -414,6 +414,12 @@ ol {
   background-size: contain;
   margin-right: 6px;
   vertical-align: -1px;
+  visibility: hidden;
+}
+
+.todo-div:hover .delete-button::before,
+.projects-list li:hover .delete-button::before {
+  visibility: visible;
 }
 
 .projects-list li:hover .delete-button::before {
