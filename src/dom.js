@@ -11,10 +11,14 @@ const todosList = document.querySelector(".todos");
 const completedTodosList = document.querySelector(".completed-todos");
 
 const selectProjectList = document.querySelector("#project-choice");
+const editModalSelectProjectList = document.querySelector(
+  "#new-project-choice",
+);
 
 function showProjects() {
   projectsList.textContent = "";
   selectProjectList.textContent = "";
+  editModalSelectProjectList.textContent = "";
 
   for (let project of projects) {
     if (project.name !== "Inbox") {
@@ -29,11 +33,16 @@ function showProjects() {
       projectsList.appendChild(projectItem);
     }
 
-    const option = document.createElement("option");
-    option.value = project.name;
-    option.textContent = project.name;
+    const optionMain = document.createElement("option");
+    optionMain.value = project.name;
+    optionMain.textContent = project.name;
 
-    selectProjectList.appendChild(option);
+    const optionEdit = document.createElement("option");
+    optionEdit.value = project.name;
+    optionEdit.textContent = project.name;
+
+    selectProjectList.appendChild(optionMain);
+    editModalSelectProjectList.appendChild(optionEdit);
   }
 }
 

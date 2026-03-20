@@ -243,7 +243,7 @@ todosList.addEventListener("click", (e) => {
     newTitle.value = todo.title;
     newDescription.value = todo.description;
     newDate.value = todo.dueDate.slice(0, 16);
-    newProject.value = todo.project;
+    newProject.selected = todo.project;
     newPriority.value = todo.priority;
   }
 });

@@ -138,12 +138,10 @@
         <div class="todo-info">
           <label for="datetime">Date: </label>
           <input type="datetime-local" name="new-datetime" id="new-datetime">
-          <label for="project-choice">Project: </label>
-          <input list="project" name="new-project-choice"
-            id="new-project-choice" placeholder="Inbox">
-          <datalist id="new-project">
+          <label for="new-project-choice">Project: </label>
+          <select id="new-project-choice">
             <option value="Inbox">Inbox</option>
-          </datalist>
+          </select>
           <label for="priority">Priority: </label>
           <select name="new-priority" id="new-priority">
             <option value="1">1</option>
