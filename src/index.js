@@ -172,7 +172,7 @@ const cancelModal = document.querySelector(".modal .cancel");
 const addButton = document.querySelector(".add-new-todo");
 addButton.addEventListener("click", () => {
   let projectInput = document.querySelector("#project-choice");
-  projectInput.placeholder = currentProject || "Inbox";
+  projectInput.value = currentProject || "Inbox";
   modal.showModal();
 });
 
